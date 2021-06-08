@@ -1,0 +1,79 @@
+header{
+	border-bottom: 7px #ded75d; 
+}
+header.bg-dark{
+  background-color: #afde87  !important;
+}
+.header-title{
+	font-family: 'Dancing Script', cursive;
+	font-size: 5.5rem;
+}
+.chinese-traditional{
+	font-family: 'Noto Sans SC', sans-serif;
+}
+.card-img-wrap{
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	max-height: 165px;
+	overflow: hidden;
+	align-items: center;
+}
+.recipe-rating{
+	font-size: .8rem;
+	text-align: right;
+}
+.recipe-rating i{
+	color: #ded75d;
+}
+
+
+
+.recipe-preview{
+	border: 1px solid #ded75d;
+	/*overflow: auto;*/
+	/*display: flex;*/
+	/*flex-wrap: wrap;*/
+}
+.recipe-details-img{
+	/*float: left;*/
+	/*margin-right: 20px;*/
+	/*display: inline-block;*/
+}
+.recipe-details{
+	/*display: inline-block;*/
+	padding: 20px;
+}
+.recipe-title{
+	font-size: 1.8rem;
+	font-weight: bold;
+}
+.recipe-date{
+	text-align: right;
+	font-size: .8rem;
+	padding-bottom: 10px;
+}
+.fa-clock, .fa-utensils{
+	font-size: 1.5rem;
+	color: #ded75d;
+}
+.recipe-time{
+	border-collapse: collapse;
+	/*display: inline-block;*/
+}
+.recipe-time td{
+	border: 1px solid #fff;
+	padding: 4px 20px;
+	background-color: #afde87;
+	border-radius: .25rem;
+	font-size: .9rem;
+}
+.recipe-time td:first-child{
+	background-color: #fff;
+	padding: 4px 5px 4px 0;
+}
+.recipe-details-separator{
+	border-top: 1px solid #bbb;
+	margin-top: 20px;
+	padding-top: 20px;
+}

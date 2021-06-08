@@ -1,22 +1,121 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
- 		<title>Recipe Skills</title>
-	</head>
-	<body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Shop Homepage - Start Bootstrap Template</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="public/assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/7d42553bbb.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="public/css/styles.css" rel="stylesheet" />
+        <link href="public/css/override.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="#!">Start Bootstrap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <button class="btn btn-outline-dark" type="submit">
+                            <i class="bi-cart-fill me-1"></i>
+                            Cart
+                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </nav> -->
+        <!-- Header-->
+        <header class="bg-dark py-1">
+            <div class="container px-4 px-lg-5 my-4">
+                <div class="text-center text-black">
+                    <h1 class="display-4 fw-bolder header-title">Let's Eat!</h1>
+                    <p class="lead fw-normal text-black-50 mb-0">让我们吃 &#8226; Comamos &#8226; चलो खाते हैं &#8226; Давайте есть &#8226; Mangeons &#8226; Mangiamo</p>
+                </div>
+            </div>
+        </header>
+        <!-- Section-->
+        <section class="py-5">
+            <div class="container px-4 px-lg-5 mt-5">
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 recipe-cards"><!--  justify-content-center -->
+                    <!-- recipe cards injected; index.js -->
+                </div>
 
-	<h1>This is a heading</h1>
-	<p>This is a paragraph.</p>
-	<button type="button" class="btn btn-warning warning">Warning</button>
-	<img src="http://localhost:3001/img/brussel_chips--s.jpg"/>
 
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-		<script src="index.js"></script>
-	</body>
+
+                <div class="recipe-preview d-sm-flex d-md-inline-flex d-lg-inline-flex flex-sm-wrap flex-md-nowrap flex-lg-nowrap">
+
+                    <div class="recipe-details-img">
+                        <img src="public/img/italian_meatballs--m.jpg" style="width: 100%;"/>
+                    </div>
+
+                    <div class="recipe-details">
+                        <h2>Italian Meatballs</h2>
+                        <div class="recipe-date">02/05/2018 11:56:29 PM</div>
+                        <table class="recipe-time">
+                            <tr>
+                                <td><i class="fas fa-clock"></i></td>
+                                <td>Prep 25 min</td>
+                                <td>Cook 20 min</td>
+                                <td>Total 45 min</td>
+                            </tr>
+                        </table>
+                        <div>
+                            <i class="fas fa-utensils"></i> Servings 6 
+                        </div>
+                        <div class="recipe-details-separator">
+                            <h5>Ingredients</h5>
+                            1 Egg (lightly beaten)<br/>
+                            0.333 cup Dry bread crumbs<br/>
+                            0.25 cup Parmesan cheese (grated)
+                        </div>
+                        <div class="recipe-details-separator">
+                            <h5>Directions</h5>
+                            <ol>
+                                <li>Preheat oven to 350°F.</li>
+                                <li>In a large bowl, combine the egg, bread crumbs, grated parmesan cheese, milk and onion.</li>
+                                <li>Add sausage to the bread crumb mixture and mix well.</li>
+                                <li>Shape into 20 meatballs; arrange on a shallow baking pan.</li>
+                                <li>Bake for 20 minutes or until meatballs are cooked through (160°F).</li>
+                                <li>Serve with your favorite sauce and spaghetti.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+        <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="public/js/index.js"></script>
+    </body>
 </html>
-
-
