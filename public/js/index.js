@@ -32,7 +32,7 @@ const assignStars = recipe => {
 
 const createCards = recipe =>{
   const cardData = $([
-    '<div class="col mb-5" data-card-uuid="' + recipe.uuid + '">',
+    '<div class="col mb-5" data-uuid="' + recipe.uuid + '">',
     '    <div class="card h-100">',
     '      <div class="card-img-wrap">',
     '        <img class="card-img-top" src="public/' + recipe.images.small + '" alt="..." />',
@@ -58,7 +58,7 @@ const createCards = recipe =>{
 
 const createPreview = function(e){
   $('#recipe-preview').remove();
-  const uuid = $(this).data('card-uuid');
+  const uuid = $(this).data('uuid');
   let i           = '',
       ingredients = '',
       directions  = '';
@@ -70,14 +70,14 @@ const createPreview = function(e){
   });
   // build ingredients list
   recipesStorage[i].ingredients.filter(function(obj, index, arr){
-    ingredients += '<li>' + obj.amount + ' ' + obj.measurement + ' ' + obj.name + '</li>';
+    ingredients += '<li data-uuid="' + obj.uuid + '">' + obj.amount + ' ' + obj.measurement + ' ' + obj.name + '</li>';
   });
   // build directions list
   recipesStorage[i].directions.filter(function(obj, index, arr){
     directions += '<li>' + obj.instructions + '</li>';
   });
   const previewData = $([
-    '<div id="recipe-preview" data-preview-uuid="' + recipesStorage[i].uuid + '" class="recipe-preview d-sm-flex d-md-inline-flex d-lg-inline-flex flex-sm-wrap flex-md-nowrap flex-lg-nowrap">',
+    '<div id="recipe-preview" data-uuid="' + recipesStorage[i].uuid + '" class="recipe-preview d-sm-flex d-md-inline-flex d-lg-inline-flex flex-sm-wrap flex-md-nowrap flex-lg-nowrap">',
     '  <div class="recipe-details-img">',
     '    <img src="public' + recipesStorage[i].images.medium + '" style="width: 100%;"/>',
     '  </div>',
@@ -89,7 +89,6 @@ const createPreview = function(e){
     '        <td><i class="fas fa-clock"></i></td>',
     '        <td>Prep :' + recipesStorage[i].prepTime + '</td>',
     '        <td>Cook :' + recipesStorage[i].cookTime + '</td>',
-    '        <td>Total :--</td>',
     '      </tr>',
     '    </table>',
     '    <div>',
@@ -97,7 +96,7 @@ const createPreview = function(e){
     '    </div>',
     '    <div class="recipe-details-separator">',
     '      <h5>Ingredients</h5>',
-    '      <ul>',
+    '      <ul class="ingredients">',
     '      ' + ingredients,
     '      </ul>',
     '    </div>',
@@ -111,6 +110,15 @@ const createPreview = function(e){
     '</div>'
   ].join("\n"));
   $('.TEST-INJECTION').append(previewData);
+  // build directions list
+  specialsStorage.filter(function(obj, index, arr){
+    const special = '<li class="ingredient-special"><i class="fas fa-hand-point-right"></i><div><b>' + obj.title + '</b><br/>' + obj.text + '</div></li>';
+    $('.ingredients li').each(function(index){
+      if ($(this).data('uuid') === obj.ingredientId){
+        $(special).insertAfter($(this));
+      }
+    });
+  });
 }
 
 const fetchJson = (e) =>{

@@ -77,3 +77,21 @@ header.bg-dark{
 	margin-top: 20px;
 	padding-top: 20px;
 }
+
+.fa-hand-point-right{
+	display: inline-block;
+	font-size: 1.2rem;
+	color: #ff0000;
+	vertical-align: top;
+	margin-right: .4rem;
+}
+.ingredient-special{
+	padding: .3rem 0 .3rem 1rem;
+}
+.ingredient-special div{
+	display: inline-block;
+	font-size: .8rem;
+	background-color: #eee;
+	padding: .3rem .7rem;
+	border-radius: 3px;
+}
