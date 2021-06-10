@@ -1,12 +1,13 @@
-const recipesStorage = JSON.parse(sessionStorage.getItem('recipesData')),
-      specialsStorage = JSON.parse(sessionStorage.getItem('specialsData'));
+let recipesStorage,
+    specialsStorage;
 
+// display rating stars on recipe cards
 const assignStars = recipe => {
   if (recipe.rating > 0){
     const ratingSplit = recipe.rating.toString().split('.');
     let stars = '',
-      i     = 1,
-      total = 0;
+        i     = 1,
+        total = 0;
     // full stars
     while (i <= ratingSplit[0]){
       stars += '<i class="fas fa-star"></i>';
@@ -30,9 +31,10 @@ const assignStars = recipe => {
   }
 }
 
+// iterate through recipe data onload and create a card for each
 const createCards = recipe =>{
   const cardData = $([
-    '<div class="col mb-5" data-uuid="' + recipe.uuid + '">',
+    '<div class="col mb-5 card-wrap" data-uuid="' + recipe.uuid + '">',
     '    <div class="card h-100">',
     '      <div class="card-img-wrap">',
     '        <img class="card-img-top" src="public/' + recipe.images.small + '" alt="..." />',
@@ -56,87 +58,92 @@ const createCards = recipe =>{
   $('.recipe-cards').append(cardData);
 }
 
+// create a more detailed recipe after clicking on recipe card
 const createPreview = function(e){
-  $('#recipe-preview').remove();
+  $('.recipe-preview').remove();
   const uuid = $(this).data('uuid');
-  let i           = '',
-      ingredients = '',
-      directions  = '';
-  // find correct recipe object
-  recipesStorage.find(function(obj, index, arr){
-    if (obj.uuid === uuid){
-      i = index; 
-    }
-  });
+  let i = '',
+      compiledIngredients = '',
+      compiledDirections  = '';
+  // find matching recipe uuid in data
+  recipesStorage.find((obj, index) => (obj.uuid === uuid) ? i = index : null);
+  // destructure found object
+  const {ingredients, directions, images:{medium}, title, editDate, prepTime, cookTime, servings} = recipesStorage[i];
   // build ingredients list
-  recipesStorage[i].ingredients.filter(function(obj, index, arr){
-    ingredients += '<li data-uuid="' + obj.uuid + '">' + obj.amount + ' ' + obj.measurement + ' ' + obj.name + '</li>';
-  });
+  ingredients.filter(obj => compiledIngredients += '<li data-uuid="' + obj.uuid + '">' + obj.amount + ' ' + obj.measurement + ' ' + obj.name + '</li>');
   // build directions list
-  recipesStorage[i].directions.filter(function(obj, index, arr){
-    directions += '<li>' + obj.instructions + '</li>';
-  });
+  directions.filter(obj => compiledDirections += '<li>' + obj.instructions + '</li>');
   const previewData = $([
-    '<div id="recipe-preview" data-uuid="' + recipesStorage[i].uuid + '" class="recipe-preview d-sm-flex d-md-inline-flex d-lg-inline-flex flex-sm-wrap flex-md-nowrap flex-lg-nowrap">',
-    '  <div class="recipe-details-img">',
-    '    <img src="public' + recipesStorage[i].images.medium + '" style="width: 100%;"/>',
-    '  </div>',
-    '  <div class="recipe-details">',
-    '    <h2>' + recipesStorage[i].title + '</h2>',
-    '    <div class="recipe-date">' + recipesStorage[i].editDate + '</div>',
-    '    <table class="recipe-time">',
-    '      <tr>',
-    '        <td><i class="fas fa-clock"></i></td>',
-    '        <td>Prep :' + recipesStorage[i].prepTime + '</td>',
-    '        <td>Cook :' + recipesStorage[i].cookTime + '</td>',
-    '      </tr>',
-    '    </table>',
-    '    <div>',
-    '      <i class="fas fa-utensils"></i> Servings: ' + recipesStorage[i].servings,
+    '<div data-uuid="' + uuid + '" class="recipe-preview col mb-5">',
+    '  <div class="close-preview"><i class="far fa-window-close"></i></div>',
+    '  <div class="d-sm-flex d-md-inline-flex d-lg-inline-flex flex-sm-wrap flex-md-nowrap flex-lg-nowrap">',
+    '    <div class="recipe-details-img">',
+    '      <img src="public' + medium + '" style="width: 100%;"/>',
     '    </div>',
-    '    <div class="recipe-details-separator">',
-    '      <h5>Ingredients</h5>',
-    '      <ul class="ingredients">',
-    '      ' + ingredients,
-    '      </ul>',
-    '    </div>',
-    '    <div class="recipe-details-separator">',
-    '      <h5>Directions</h5>',
-    '      <ol>',
-    '       ' + directions,
-    '      </ol>',
+    '    <div class="recipe-details">',
+    '      <h2>' + title + '</h2>',
+    '      <div class="recipe-date">' + editDate + '</div>',
+    '      <table class="recipe-time">',
+    '        <tr>',
+    '          <td class="white"><i class="fas fa-clock"></i></td>',
+    '          <td>Prep :' + prepTime + '</td>',
+    '          <td>Cook :' + cookTime + '</td>',
+    '          <td class="white"><i class="fas fa-utensils"></i></td>',
+    '          <td>Servings: ' + servings + '</td>',
+    '        </tr>',
+    '      </table>',
+    '      <div class="recipe-details-separator">',
+    '        <h5>Ingredients</h5>',
+    '        <ul class="ingredients">',
+    '        ' + compiledIngredients,
+    '        </ul>',
+    '      </div>',
+    '      <div class="recipe-details-separator">',
+    '        <h5>Directions</h5>',
+    '        <ol>',
+    '         ' + compiledDirections,
+    '        </ol>',
+    '      </div>',
     '    </div>',
     '  </div>',
     '</div>'
   ].join("\n"));
-  $('.TEST-INJECTION').append(previewData);
-  // build directions list
-  specialsStorage.filter(function(obj, index, arr){
+  // insert preview after corresponding card
+  $(previewData).insertAfter($(this));
+  // get specials and place under appropriate ingredients
+  specialsStorage.filter(function(obj){
     const special = '<li class="ingredient-special"><i class="fas fa-hand-point-right"></i><div><b>' + obj.title + '</b><br/>' + obj.text + '</div></li>';
-    $('.ingredients li').each(function(index){
+    $('.ingredients li').each(function(){
       if ($(this).data('uuid') === obj.ingredientId){
         $(special).insertAfter($(this));
       }
     });
   });
+  // scroll to preview
+  $('html, body').scrollTop($('.recipe-preview').offset().top - 100);
 }
 
-const fetchJson = (e) =>{
+// close recipe preview
+const closePreview = e => {
+  const previousCard = $(e.currentTarget).closest('.col').prev('.col');
+  $('.recipe-preview').remove();
+  $('html, body').scrollTop(previousCard.offset().top - 20);
+}
+
+const fetchJson = e =>{
   // get recipes data
   $.getJSON( "http://localhost:3001/recipes", function(recipesData) {
-    sessionStorage.setItem('recipesData', JSON.stringify(recipesData));
+    recipesStorage = recipesData;
     recipesStorage.filter(createCards);
   });
   // get specials data
   $.getJSON( "http://localhost:3001/specials", function(specialsData) {
-    sessionStorage.setItem('specialsData', JSON.stringify(specialsData));
+    specialsStorage = specialsData;
   });
 }
 
-
-
-
 $(document).ready(function() {
   fetchJson();
-  $('body').delegate('.mb-5', 'click', createPreview);
+  $('body').delegate('.card-wrap', 'click', createPreview);
+  $('body').delegate('.close-preview', 'click', closePreview);
 });

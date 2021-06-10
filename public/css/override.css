@@ -1,97 +1,110 @@
 header{
-	border-bottom: 7px #ded75d; 
+  border-bottom: 7px solid #ded75d; 
 }
 header.bg-dark{
   background-color: #afde87  !important;
 }
 .header-title{
-	font-family: 'Dancing Script', cursive;
-	font-size: 5.5rem;
+  font-family: 'Dancing Script', cursive;
+  font-size: 5.5rem;
 }
 .chinese-traditional{
-	font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Sans SC', sans-serif;
+}
+.card:hover{
+  box-shadow: 2px 2px 10px 5px #ddd;
+  cursor: pointer;
 }
 .card-img-wrap{
-	display: flex;
-	justify-content: center;
-	width: 100%;
-	max-height: 165px;
-	overflow: hidden;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-height: 165px;
+  overflow: hidden;
+  align-items: center;
 }
 .recipe-rating{
-	font-size: .8rem;
-	text-align: right;
+  font-size: .8rem;
+  text-align: right;
 }
 .recipe-rating i{
-	color: #ded75d;
+  color: #ded75d;
 }
-
-
-
+.close-preview{
+  text-align: right;
+  font-size: 1.3rem;
+  padding: 0 .5rem .1rem 0;
+  background-color: #ded75d;
+  color: #888;
+}
+.close-preview i{
+  cursor: pointer;
+}
 .recipe-preview{
-	border: 1px solid #ded75d;
+  border: 1px solid #ded75d;
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
 }
 .recipe-preview ul{
-	list-style-type: none;
-	padding-left: 1.0rem
+  list-style-type: none;
+  padding-left: 1.0rem
 }
 .recipe-details-img{
 }
 .recipe-details{
-	padding: 20px;
+  padding: 20px;
 }
 .recipe-title{
-	font-size: 1.8rem;
-	font-weight: bold;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 .recipe-date{
-	text-align: right;
-	font-size: .8rem;
-	padding-bottom: 10px;
+  text-align: right;
+  font-size: .8rem;
+  padding-bottom: 10px;
 }
 .fa-clock, .fa-utensils{
-	font-size: 1.5rem;
-	color: #ded75d;
+  font-size: 1.3rem;
+  color: #ded75d;
+  vertical-align: middle;
 }
 .fa-utensils{
-	margin-right: 10px;
+  margin-left: 1rem;
 }
 .recipe-time{
-	border-collapse: collapse;
+  border-collapse: collapse;
 }
 .recipe-time td{
-	border: 1px solid #fff;
-	padding: 4px 20px;
-	background-color: #afde87;
-	border-radius: .25rem;
-	font-size: .9rem;
-	vertical-align: top;
+  border: 1px solid #fff;
+  padding: 0 10px;
+  background-color: #afde87;
+  border-radius: .25rem;
+  font-size: .9rem;
 }
-.recipe-time td:first-child{
-	background-color: #fff;
-	padding: 4px 5px 4px 0;
+.recipe-time td.white{
+  background-color: #fff;
+  padding: 4px 5px 4px 0;
 }
 .recipe-details-separator{
-	border-top: 1px solid #bbb;
-	margin-top: 20px;
-	padding-top: 20px;
+  border-top: 1px solid #bbb;
+  margin-top: 20px;
+  padding-top: 20px;
 }
-
 .fa-hand-point-right{
-	display: inline-block;
-	font-size: 1.2rem;
-	color: #ff0000;
-	vertical-align: top;
-	margin-right: .4rem;
+  display: inline-block;
+  font-size: 1.2rem;
+  color: #ff0000;
+  vertical-align: top;
+  margin-right: .4rem;
 }
 .ingredient-special{
-	padding: .3rem 0 .3rem 1rem;
+  padding: .3rem 0 .3rem 1rem;
 }
 .ingredient-special div{
-	display: inline-block;
-	font-size: .8rem;
-	background-color: #eee;
-	padding: .3rem .7rem;
-	border-radius: 3px;
+  display: inline-block;
+  font-size: .8rem;
+  background-color: #eee;
+  padding: .3rem .7rem;
+  border-radius: 3px;
 }
