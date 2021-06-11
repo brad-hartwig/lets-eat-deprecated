@@ -70,9 +70,9 @@ const createPreview = function(e){
   // destructure found object
   const {ingredients, directions, images:{medium}, title, editDate, prepTime, cookTime, servings} = recipesStorage[i];
   // build ingredients list
-  ingredients.filter(obj => compiledIngredients += '<li data-uuid="' + obj.uuid + '">' + obj.amount + ' ' + obj.measurement + ' ' + obj.name + '</li>');
+  ingredients.map(obj => compiledIngredients += '<li data-uuid="' + obj.uuid + '">' + obj.amount + ' ' + obj.measurement + ' ' + obj.name + '</li>');
   // build directions list
-  directions.filter(obj => compiledDirections += '<li>' + obj.instructions + '</li>');
+  directions.map(obj => compiledDirections += '<li>' + obj.instructions + '</li>');
   const previewData = $([
     '<div data-uuid="' + uuid + '" class="recipe-preview col mb-5">',
     '  <div class="close-preview"><i class="far fa-window-close"></i></div>',
@@ -111,7 +111,7 @@ const createPreview = function(e){
   // insert preview after corresponding card
   $(previewData).insertAfter($(this));
   // get specials and place under appropriate ingredients
-  specialsStorage.filter(function(obj){
+  specialsStorage.map(function(obj){
     const special = '<li class="ingredient-special"><i class="fas fa-hand-point-right"></i><div><b>' + obj.title + '</b><br/>' + obj.text + '</div></li>';
     $('.ingredients li').each(function(){
       if ($(this).data('uuid') === obj.ingredientId){
@@ -134,7 +134,7 @@ const fetchJson = e =>{
   // get recipes data
   $.getJSON( "http://localhost:3001/recipes", function(recipesData) {
     recipesStorage = recipesData;
-    recipesStorage.filter(createCards);
+    recipesStorage.map(createCards);
   });
   // get specials data
   $.getJSON( "http://localhost:3001/specials", function(specialsData) {
