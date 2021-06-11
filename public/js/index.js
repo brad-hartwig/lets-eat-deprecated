@@ -1,5 +1,19 @@
-let recipesStorage,
-    specialsStorage;
+(function(){
+  let recipesStorage,
+      specialsStorage;
+})();
+
+const fetchJson = e => {
+  // get recipes data
+  $.getJSON( "http://localhost:3001/recipes", function(recipesData) {
+    recipesStorage = recipesData;
+    recipesStorage.map(createCards);
+  });
+  // get specials data
+  $.getJSON( "http://localhost:3001/specials", function(specialsData) {
+    specialsStorage = specialsData;
+  });
+}
 
 // display rating stars on recipe cards
 const assignStars = recipe => {
@@ -32,7 +46,7 @@ const assignStars = recipe => {
 }
 
 // iterate through recipe data onload and create a card for each
-const createCards = recipe =>{
+const createCards = recipe => {
   const cardData = $([
     '<div class="col mb-5 card-wrap" data-uuid="' + recipe.uuid + '">',
     '    <div class="card h-100">',
@@ -50,7 +64,7 @@ const createCards = recipe =>{
     '        </div>',
     '        <!-- Recipe actions-->',
     '        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">',
-    '            <div class="recipe-rating">' + assignStars(recipe) + '</div>',//<a class="btn btn-outline-dark mt-auto" href="#">View Recipe</a>
+    '            <div class="recipe-rating">' + assignStars(recipe) + '</div>',
     '        </div>',
     '    </div>',
     '</div>'
@@ -111,13 +125,9 @@ const createPreview = function(e){
   // insert preview after corresponding card
   $(previewData).insertAfter($(this));
   // get specials and place under appropriate ingredients
-  specialsStorage.map(function(obj){
+  specialsStorage.map(obj => { 
     const special = '<li class="ingredient-special"><i class="fas fa-hand-point-right"></i><div><b>' + obj.title + '</b><br/>' + obj.text + '</div></li>';
-    $('.ingredients li').each(function(){
-      if ($(this).data('uuid') === obj.ingredientId){
-        $(special).insertAfter($(this));
-      }
-    });
+    $('.ingredients li').each((index, li) => ($(li).data('uuid') === obj.ingredientId) ? $(special).insertAfter($(li)) : null);
   });
   // scroll to preview
   $('html, body').scrollTop($('.recipe-preview').offset().top - 100);
@@ -128,18 +138,6 @@ const closePreview = e => {
   const previousCard = $(e.currentTarget).closest('.col').prev('.col');
   $('.recipe-preview').remove();
   $('html, body').scrollTop(previousCard.offset().top - 20);
-}
-
-const fetchJson = e =>{
-  // get recipes data
-  $.getJSON( "http://localhost:3001/recipes", function(recipesData) {
-    recipesStorage = recipesData;
-    recipesStorage.map(createCards);
-  });
-  // get specials data
-  $.getJSON( "http://localhost:3001/specials", function(specialsData) {
-    specialsStorage = specialsData;
-  });
 }
 
 $(document).ready(function() {
