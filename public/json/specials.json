@@ -1,5 +1,4 @@
-{
-  "specials": [
+[
     {
       "uuid": "233d8582-141a-460d-b7e1-d623afd69e7d",
       "ingredientId": "62798278-2fbc-4c31-98de-b7959c191688",
@@ -32,4 +31,3 @@
       "text": "Flash this recipe at a Roundy's near you and get 10% off Eriksens Hand Rolled Butter, salted or unsalted."
     }
   ]
-}
