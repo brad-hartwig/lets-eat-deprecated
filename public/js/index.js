@@ -11,7 +11,7 @@ const fetchJson = e => {
     recipesStorage.map(createCards);
   });
   // get specials data
-  $.getJSON( "/rubanga/public/json/specials", function(specialsData) {
+  $.getJSON( "/rubanga/public/json/specials.json", function(specialsData) {
   // $.getJSON( "http://localhost:3001/specials", function(specialsData) {
     specialsStorage = specialsData;
   });
