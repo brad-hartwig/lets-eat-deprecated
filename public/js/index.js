@@ -5,13 +5,13 @@
 
 const fetchJson = e => {
   // get recipes data
-  $.getJSON( "/public/json/recipes.json", function(recipesData) {
+  $.getJSON( "../json/recipes.json", function(recipesData) {
   // $.getJSON( "http://localhost:3001/recipes", function(recipesData) {
     recipesStorage = recipesData;
     recipesStorage.map(createCards);
   });
   // get specials data
-  $.getJSON( "/public/json/specials", function(specialsData) {
+  $.getJSON( "../json/specials", function(specialsData) {
   // $.getJSON( "http://localhost:3001/specials", function(specialsData) {
     specialsStorage = specialsData;
   });
@@ -53,7 +53,7 @@ const createCards = recipe => {
     '<div class="col mb-5 card-wrap" data-uuid="' + recipe.uuid + '">',
     '    <div class="card h-100">',
     '      <div class="card-img-wrap">',
-    '        <img class="card-img-top" src="../public/' + recipe.images.small + '" alt="..." />',
+    '        <img class="card-img-top" src="public/' + recipe.images.small + '" alt="..." />',
     '      </div>',
     '        <!-- Recipe-->',
     '        <div class="card-body p-4">',
@@ -94,7 +94,7 @@ const createPreview = function(e){
     '  <div class="close-preview"><i class="far fa-window-close"></i></div>',
     '  <div class="d-sm-flex d-md-inline-flex d-lg-inline-flex flex-sm-wrap flex-md-nowrap flex-lg-nowrap">',
     '    <div class="recipe-details-img">',
-    '      <img src="../public' + medium + '" style="width: 100%;"/>',
+    '      <img src="public' + medium + '" style="width: 100%;"/>',
     '    </div>',
     '    <div class="recipe-details">',
     '      <h2>' + title + '</h2>',
