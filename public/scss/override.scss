@@ -2,9 +2,9 @@ $pea-green: #ded75d;
 
 header{
   border-bottom: 7px solid $pea-green;
-  .bg-dark{
-    background-color: #afde87  !important;
-  }
+}
+header.bg-dark{
+  background-color: #afde87  !important;
 }
 .header-title{
   font-family: 'Dancing Script', cursive;
