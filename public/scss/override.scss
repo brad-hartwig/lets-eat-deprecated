@@ -80,11 +80,11 @@ header.bg-dark{
     background-color: #afde87;
     border-radius: .25rem;
     font-size: .9rem;
-    .white{
-      background-color: #fff;
-      padding: 4px 5px 4px 0;
-    }
   }
+}
+.recipe-time td.white{
+  background-color: #fff;
+  padding: 4px 5px 4px 0;
 }
 .recipe-details-separator{
   border-top: 1px solid #bbb;

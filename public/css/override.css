@@ -99,7 +99,7 @@ header.bg-dark {
   font-size: .9rem;
 }
 
-.recipe-time td .white {
+.recipe-time td.white {
   background-color: #fff;
   padding: 4px 5px 4px 0;
 }
