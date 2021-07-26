@@ -1,3 +1,4 @@
+// anonymous
 (function(){
   let recipesStorage,
       specialsStorage;
