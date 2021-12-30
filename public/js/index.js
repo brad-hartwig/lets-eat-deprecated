@@ -6,13 +6,13 @@
 
 const fetchJson = e => {
   // get recipes data
-  $.getJSON( "/rubanga/public/json/recipes.json", function(recipesData) {
+  $.getJSON( "/public/json/recipes.json", function(recipesData) {
   // $.getJSON( "http://localhost:3001/recipes", function(recipesData) {
     recipesStorage = recipesData;
     recipesStorage.map(createCards);
   });
   // get specials data
-  $.getJSON( "/rubanga/public/json/specials.json", function(specialsData) {
+  $.getJSON( "/public/json/specials.json", function(specialsData) {
   // $.getJSON( "http://localhost:3001/specials", function(specialsData) {
     specialsStorage = specialsData;
   });
